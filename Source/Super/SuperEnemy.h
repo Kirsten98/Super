@@ -28,7 +28,7 @@ public:
 	void set_is_dead(bool updated_is_dead);
 
 	//Getter for is_dead
-	bool get_movement_speed();
+	float get_movement_speed();
 
 	// Setter for is_dead
 	void set_movement_speed(float updated_movement_speed);

@@ -75,7 +75,7 @@ void ASuperEnemy::set_is_dead(bool updated_is_dead)
 }
 
 //Getter for is_dead
-bool ASuperEnemy::get_movement_speed() {
+float ASuperEnemy::get_movement_speed() {
 	return movement_speed;
 }
 
