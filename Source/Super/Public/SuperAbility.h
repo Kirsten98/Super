@@ -19,13 +19,35 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	float active_timer = 30;
+
+	bool is_active = false;
+
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	//Create Mesh for Weapon
-	//Create primary use function
-	//Create heavy use function	
+	//Weapon Mesh
+	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
+		USkeletalMeshComponent* SuperWeapon;
+	
+	//Weapon Primary Attack
+	void primaryAttack();
 
+	//Weapon Heavy Attach
+	void heavyAttack();
+
+	//Activate Super
+	void activate();
+
+	//Deactivate Super
+	void deactivate();
+
+	//Get is Active variable
+	bool get_is_active();
+
+	//Set is Active variable
+	void set_is_active(bool new_is_active);
 
 };
