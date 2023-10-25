@@ -12,42 +12,48 @@ class SUPER_API ASuperAbility : public AActor
 	GENERATED_BODY()
 	
 public:	
-	// Sets default values for this actor's properties
-	ASuperAbility();
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	float active_timer = 30;
+	//length for super to be active (seconds)
+	float active_timer;
 
-	bool is_active = false;
+	//Boolean if the Super is currently Active
+	bool is_active;
+
+	//Weapon Mesh
+	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
+		USkeletalMeshComponent* SuperWeapon;
 
 
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
-	//Weapon Mesh
-	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
-		USkeletalMeshComponent* SuperWeapon;
 	
 	//Weapon Primary Attack
-	void primaryAttack();
+	virtual void primaryAttack() PURE_VIRTUAL(ASuperAbility::primaryAttack);
 
 	//Weapon Heavy Attach
-	void heavyAttack();
+	virtual void heavyAttack() PURE_VIRTUAL(ASuperAbility::heavyAttack);
 
 	//Activate Super
-	void activate();
+	virtual void activate() PURE_VIRTUAL(ASuperAbility::activate);
 
 	//Deactivate Super
-	void deactivate();
+	virtual void deactivate() PURE_VIRTUAL(ASuperAbility::deactivate);
 
 	//Get is Active variable
-	bool get_is_active();
+	virtual bool get_is_active()
+	{
+		return is_active;
+	};
 
 	//Set is Active variable
-	void set_is_active(bool new_is_active);
+	virtual void set_is_active(bool new_is_active)
+	{
+		is_active = new_is_active;
+	};
 
 };
